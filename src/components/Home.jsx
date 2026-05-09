@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
 import { motion } from "framer-motion";
@@ -32,379 +33,451 @@ function Home() {
     },
   ];
 
+  const particles = [
+    "left-[8%] top-[18%] h-2 w-2",
+    "left-[18%] top-[68%] h-1.5 w-1.5",
+    "left-[34%] top-[24%] h-2.5 w-2.5",
+    "left-[48%] top-[78%] h-1 w-1",
+    "left-[62%] top-[16%] h-2 w-2",
+    "left-[76%] top-[58%] h-1.5 w-1.5",
+    "left-[90%] top-[30%] h-2.5 w-2.5",
+    "left-[84%] top-[84%] h-1 w-1",
+  ];
+
   return (
-    <div className="bg-[#020617] text-white min-h-screen overflow-hidden relative">
+    <div className="font-[Poppins] min-h-screen overflow-hidden relative text-white bg-[#02030a]">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,#21406a_0%,transparent_28%),radial-gradient(circle_at_82%_18%,#6d4a12_0%,transparent_26%),radial-gradient(circle_at_50%_95%,#0e4f57_0%,transparent_32%),linear-gradient(135deg,#02030a_0%,#07111f_48%,#000000_100%)]" />
 
-      {/* ================= GLOBAL GLOW ================= */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[150px] rounded-full" />
-
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#F5E6A8]/10 blur-[150px] rounded-full" />
-
-      {/* ================= NAVBAR ================= */}
-      <nav className="sticky top-0 z-50 bg-black/20 backdrop-blur-2xl border-b border-white/10">
-
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-
-          {/* LOGO */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold bg-gradient-to-r from-[#F5E6A8] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]"
-          >
-            Hivenex
-          </motion.div>
-
-          {/* DESKTOP MENU */}
-          <div className="hidden md:flex gap-8 text-gray-300 text-sm">
-            {["Features", "Pricing", "Download", "Support"].map((item) => (
-              <a
-                key={item}
-                href="#"
-                className="hover:text-[#F5E6A8] transition duration-300 relative group"
-              >
-                {item}
-
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#D4AF37] transition-all duration-300 group-hover:w-full" />
-              </a>
-            ))}
-          </div>
-
-          {/* BUTTONS */}
-          <div className="hidden md:flex gap-4">
-            <button className="text-gray-300 hover:text-[#F5E6A8] transition">
-              Log in
-            </button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:shadow-[0_0_45px_rgba(212,175,55,0.9)] transition"
-            >
-              Start Free Trial
-            </motion.button>
-          </div>
-
-          {/* MOBILE */}
-          <div className="md:hidden">
-            <button onClick={() => setOpen(!open)}>
-              <HiMenu size={26} />
-            </button>
-          </div>
-        </div>
-
-        {/* MOBILE MENU */}
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            className="md:hidden px-6 pb-6 flex flex-col gap-4 text-gray-300"
-          >
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">Download</a>
-            <a href="#">Support</a>
-          </motion.div>
-        )}
-      </nav>
-
-      {/* ================= HERO ================= */}
-      <section className="relative overflow-hidden py-32">
-
-        {/* GRID */}
-        <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:70px_70px]" />
-
-        {/* FLOATING GLOWS */}
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 6,
-          }}
-          className="absolute top-[10%] left-[20%] w-[350px] h-[350px] bg-[#D4AF37]/15 blur-[120px] rounded-full"
-        />
-
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-          }}
-          transition={{
-            repeat: Infinity,
-            duration: 8,
-          }}
-          className="absolute right-[10%] top-[30%] w-[300px] h-[300px] bg-[#F5E6A8]/10 blur-[120px] rounded-full"
-        />
-
-        {/* CONTENT */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-black leading-[1.1] tracking-tight bg-gradient-to-b from-white via-[#F5E6A8] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-[0_0_40px_rgba(212,175,55,0.4)]"
-          >
-            Simple Accounting <br />
-            for Modern Businesses
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mt-8 text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed"
-          >
-            Manage invoices, track expenses, and generate reports —
-            all inside a premium cloud accounting platform.
-          </motion.p>
-
-          {/* BUTTONS */}
-          <div className="mt-10 flex flex-col md:flex-row justify-center gap-4">
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-4 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.5)] hover:shadow-[0_0_60px_rgba(212,175,55,0.9)] transition"
-            >
-              Start Free Trial
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="border border-white/20 bg-white/5 backdrop-blur-lg px-8 py-4 rounded-2xl text-lg hover:border-[#D4AF37]/40 hover:text-[#F5E6A8] transition"
-            >
-              Download App
-            </motion.button>
-          </div>
-
-          {/* STATS */}
-          <div className="mt-14 flex justify-center gap-10 flex-wrap text-sm text-gray-400">
-            <span>✔ No credit card required</span>
-            <span>✔ Cloud synced</span>
-            <span>✔ Secure storage</span>
-          </div>
-
-          {/* TRUSTED */}
-          <div className="mt-20">
-            <p className="text-gray-500 text-sm mb-8 uppercase tracking-[0.3em]">
-              Trusted Worldwide
-            </p>
-
-            <div className="flex justify-center flex-wrap gap-10 opacity-60 text-xl">
-              <span>Google</span>
-              <span>Microsoft</span>
-              <span>Stripe</span>
-              <span>Slack</span>
-            </div>
-          </div>
-        </div>
-      </section>
-       {/* ================= FEATURES ================= */}
-<section className="relative py-20 border-t border-white/10">
-
-{/* Glow */}
-<div className="absolute left-0 top-10 w-[250px] h-[250px] bg-[#D4AF37]/10 blur-[120px] rounded-full" />
-
-<div className="max-w-7xl mx-auto px-6">
-
-  {/* Heading */}
-  <div className="text-center mb-12">
-    <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
-      FEATURES
-    </p>
-
-    <h2 className="text-4xl md:text-5xl font-bold">
-      Powerful Features
-    </h2>
-
-    <p className="text-gray-400 mt-4">
-      Everything you need to manage your finances.
-    </p>
-  </div>
-
-  {/* Cards */}
-  <div className="grid md:grid-cols-3 gap-5">
-
-    {features.map((item, index) => (
       <motion.div
-        key={item.title}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.15 }}
-        whileHover={{ y: -6 }}
-        className="relative bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-2xl p-7 overflow-hidden group hover:border-[#D4AF37]/30 transition duration-300"
-      >
+        animate={{
+          x: [0, 120, -70, 0],
+          y: [0, -90, 80, 0],
+          scale: [1, 1.25, 0.9, 1],
+          rotate: [0, 18, -12, 0],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-40 -left-36 h-[760px] w-[760px] rounded-full bg-[conic-gradient(from_180deg,#D4AF3735,#1fb6ff20,#7c3aed22,#F5E6A824,#D4AF3735)] blur-[150px]"
+      />
 
-        {/* SOFT HOVER GLOW */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,#D4AF3720,transparent_70%)]" />
+      <motion.div
+        animate={{
+          x: [0, -140, 80, 0],
+          y: [0, 110, -80, 0],
+          scale: [1, 0.82, 1.18, 1],
+          rotate: [0, -16, 10, 0],
+        }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -bottom-44 -right-40 h-[820px] w-[820px] rounded-full bg-[conic-gradient(from_45deg,#22d3ee24,#D4AF3728,#ef44441a,#8b5cf624,#22d3ee24)] blur-[170px]"
+      />
 
-        {/* ICON */}
-        <div className="relative z-10 w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#F5E6A8] shadow-[0_0_20px_rgba(212,175,55,0.3)] mb-5" />
+      <motion.div
+        animate={{ opacity: [0.25, 0.5, 0.25], scale: [1, 1.08, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-1/2 top-20 h-[520px] w-[520px] -translate-x-1/2 rounded-full border border-[#F5E6A8]/10 bg-[#D4AF37]/5 blur-2xl"
+      />
 
-        {/* TITLE */}
-        <h3 className="relative z-10 text-xl font-semibold">
-          {item.title}
-        </h3>
+      <motion.div
+        animate={{ backgroundPosition: ["0px 0px", "90px 90px"] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:90px_90px]"
+      />
 
-        {/* TEXT */}
-        <p className="relative z-10 text-gray-400 mt-3 leading-relaxed text-sm">
-          {item.desc}
-        </p>
+      <motion.div
+        animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute inset-0 opacity-20 bg-[linear-gradient(110deg,transparent_0%,rgba(245,230,168,0.18)_28%,transparent_54%,rgba(34,211,238,0.12)_78%,transparent_100%)] bg-[length:220%_220%]"
+      />
 
-      </motion.div>
-    ))}
-
-  </div>
-</div>
-</section>
-
-{/* ================= DASHBOARD ================= */}
-<section className="relative py-20">
-
-<div className="absolute inset-0 bg-[#D4AF37]/5 blur-[120px]" />
-
-<div className="max-w-6xl mx-auto px-6">
-
-  <motion.div
-    initial={{ opacity: 0, scale: 0.96 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.7 }}
-    className="relative bg-white/[0.04] border border-white/10 rounded-[28px] backdrop-blur-2xl overflow-hidden shadow-[0_0_60px_rgba(212,175,55,0.08)]"
-  >
-
-    {/* TOP BAR */}
-    <div className="flex items-center gap-2 px-6 py-4 border-b border-white/10 bg-black/20">
-      <div className="w-3 h-3 rounded-full bg-red-500" />
-      <div className="w-3 h-3 rounded-full bg-yellow-500" />
-      <div className="w-3 h-3 rounded-full bg-green-500" />
-    </div>
-
-    {/* CONTENT */}
-    <div className="grid md:grid-cols-3 gap-5 p-6">
-
-      {[1, 2, 3].map((card) => (
-        <motion.div
-          whileHover={{ y: -4 }}
-          key={card}
-          className="bg-black/25 border border-white/10 rounded-2xl p-5 hover:border-[#D4AF37]/20 transition"
-        >
-
-          <div className="h-4 w-28 rounded-full bg-white/10 mb-4" />
-
-          <div className="h-9 w-36 rounded-full bg-gradient-to-r from-[#D4AF37]/60 to-[#F5E6A8]/70 mb-5" />
-
-          <div className="space-y-2">
-            <div className="h-2 rounded-full bg-white/10" />
-            <div className="h-2 rounded-full bg-white/10 w-[80%]" />
-            <div className="h-2 rounded-full bg-white/10 w-[60%]" />
-          </div>
-
-        </motion.div>
+      {particles.map((className, index) => (
+        <motion.span
+          key={className}
+          animate={{
+            y: [0, -28, 0],
+            opacity: [0.2, 0.85, 0.2],
+            scale: [1, 1.6, 1],
+          }}
+          transition={{
+            duration: 4 + index * 0.45,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: index * 0.25,
+          }}
+          className={`absolute rounded-full bg-[#F5E6A8] shadow-[0_0_24px_rgba(245,230,168,0.8)] ${className}`}
+        />
       ))}
 
-    </div>
-  </motion.div>
-</div>
-</section>
+      <div className="relative z-10">
+        {/* Navbar */}
+        <nav className="sticky top-0 z-50 bg-black/20 backdrop-blur-3xl border-b border-white/10">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              animate={{
+                textShadow: [
+                  "0 0 20px rgba(212,175,55,0.3)",
+                  "0 0 40px rgba(212,175,55,0.6)",
+                  "0 0 20px rgba(212,175,55,0.3)",
+                ],
+              }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="text-2xl font-bold bg-gradient-to-r from-[#F5E6A8] via-[#D4AF37] to-[#FFF4C7] bg-clip-text text-transparent"
+            >
+              Hivenex
+            </motion.div>
 
-{/* ================= DOWNLOAD ================= */}
-<section className="relative py-20 border-t border-white/10">
+            <div className="hidden md:flex gap-8 text-gray-300 text-sm font-medium">
+              {["Features", "Pricing", "Download", "Support"].map((item) => (
+                <motion.a
+                  key={item}
+                  href="#"
+                  whileHover={{ y: -2 }}
+                  className="hover:text-[#F5E6A8] transition relative group"
+                >
+                  {item}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] transition-all duration-300 group-hover:w-full" />
+                </motion.a>
+              ))}
+            </div>
 
-<div className="absolute right-0 top-10 w-[300px] h-[300px] bg-[#D4AF37]/10 blur-[120px] rounded-full" />
+            <div className="hidden md:flex gap-4">
+              <button className="text-gray-300 hover:text-[#F5E6A8] transition">
+                Log in
+              </button>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 0 50px rgba(212,175,55,0.8)",
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)]"
+              >
+                Start Free Trial
+              </motion.button>
+            </div>
 
-<div className="max-w-7xl mx-auto px-6">
+            <div className="md:hidden">
+              <button onClick={() => setOpen(!open)}>
+                <HiMenu size={26} />
+              </button>
+            </div>
+          </div>
 
-  {/* Heading */}
-  <div className="text-center mb-12">
-    <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
-      DOWNLOAD
-    </p>
+          {open && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              className="md:hidden px-6 pb-6 flex flex-col gap-4 text-gray-300"
+            >
+              <a href="#">Features</a>
+              <a href="#">Pricing</a>
+              <a href="#">Download</a>
+              <a href="#">Support</a>
+            </motion.div>
+          )}
+        </nav>
 
-    <h2 className="text-4xl md:text-5xl font-bold">
-      Available Everywhere
-    </h2>
-
-    <p className="text-gray-400 mt-4">
-      Choose your platform and get started instantly.
-    </p>
-  </div>
-
-  {/* Cards */}
-  <div className="grid md:grid-cols-4 gap-5">
-
-    {items.map((item) => (
-      <motion.div
-        whileHover={{
-          y: -6,
-        }}
-        key={item.name}
-        className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center overflow-hidden group hover:border-[#D4AF37]/30 transition duration-300"
-      >
-
-        {/* Glow */}
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,#D4AF3715,transparent_70%)]" />
-
-        {/* IMAGE */}
-        <div className="relative z-10 w-20 h-20 rounded-full bg-black/30 flex items-center justify-center mx-auto mb-5 border border-white/10">
-
-          <img
-            src={item.image}
-            alt={item.name}
-            className="w-12 h-12 object-contain"
+        {/* Hero */}
+        <section className="relative py-32 text-center overflow-hidden">
+          <motion.div
+            animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+            transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D4AF37]/15"
           />
-        </div>
 
-        {/* NAME */}
-        <h3 className="relative z-10 text-lg font-semibold">
-          {item.name}
-        </h3>
+          <motion.div
+            animate={{ rotate: -360, scale: [1.08, 1, 1.08] }}
+            transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
+            className="absolute top-1/2 left-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-300/10"
+          />
 
-        {/* TEXT */}
-        <p className="relative z-10 text-gray-400 mt-2 text-sm">
-          Download available
-        </p>
+          <div className="relative z-10 max-w-7xl mx-auto px-6">
+            <motion.h1
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+              className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight bg-gradient-to-b from-white via-[#F5E6A8] to-[#D4AF37] bg-clip-text text-transparent"
+            >
+              Simple Accounting
+              <br />
+              for Modern Businesses
+            </motion.h1>
 
-        {/* BUTTON */}
-        <button className="relative z-10 mt-5 w-full py-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D4AF37]/40 hover:text-[#F5E6A8] transition">
-          Download
-        </button>
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.75 }}
+              className="mt-8 text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed"
+            >
+              Manage invoices, track expenses, and generate reports - all
+              inside a premium cloud accounting platform.
+            </motion.p>
 
-      </motion.div>
-    ))}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="mt-10 flex flex-col md:flex-row justify-center gap-4"
+            >
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  boxShadow: "0 0 60px rgba(212,175,55,0.9)",
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-4 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.5)]"
+              >
+                Start Free Trial
+              </motion.button>
 
-  </div>
-</div>
-</section>
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="border border-white/20 bg-white/5 backdrop-blur-xl px-8 py-4 rounded-2xl text-lg hover:text-[#F5E6A8] transition"
+              >
+                Download App
+              </motion.button>
+            </motion.div>
 
-{/* ================= CTA ================= */}
-<section className="relative py-20 border-t border-white/10 text-center overflow-hidden">
+            <div className="mt-14 flex justify-center gap-4 md:gap-10 flex-wrap text-sm text-gray-300">
+              {["No credit card required", "Cloud synced", "Secure storage"].map(
+                (label, index) => (
+                  <motion.span
+                    key={label}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.55 + index * 0.12 }}
+                    className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 backdrop-blur-xl"
+                  >
+                    {label}
+                  </motion.span>
+                )
+              )}
+            </div>
+          </div>
+        </section>
 
-<div className="absolute inset-0 bg-[#D4AF37]/5 blur-[100px]" />
+        {/* Features */}
+        <section className="relative py-20 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
+                FEATURES
+              </p>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Powerful Features
+              </h2>
+              <p className="text-gray-400 mt-4">
+                Everything you need to manage your finances.
+              </p>
+            </div>
 
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  className="relative z-10 max-w-3xl mx-auto px-6"
->
+            <div className="grid md:grid-cols-3 gap-5">
+              {features.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.15 }}
+                  whileHover={{
+                    y: -10,
+                    rotateX: 4,
+                    boxShadow: "0 24px 80px rgba(212,175,55,0.16)",
+                  }}
+                  className="relative bg-white/[0.03] border border-white/10 backdrop-blur-xl rounded-2xl p-7 overflow-hidden group hover:border-[#D4AF37]/30 transition"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,#D4AF3720,transparent_70%)]" />
+                  <motion.div
+                    animate={{ rotate: [0, 8, -8, 0], scale: [1, 1.08, 1] }}
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.5,
+                    }}
+                    className="relative z-10 w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#F5E6A8] mb-5 shadow-[0_0_26px_rgba(212,175,55,0.35)]"
+                  />
+                  <h3 className="relative z-10 text-xl font-semibold">
+                    {item.title}
+                  </h3>
+                  <p className="relative z-10 text-gray-400 mt-3 leading-relaxed text-sm">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-  <h2 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-b from-white to-[#F5E6A8] bg-clip-text text-transparent">
-    Ready to simplify your accounting?
-  </h2>
+        {/* Dashboard Preview */}
+        <section className="relative py-20">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative bg-white/[0.04] border border-white/10 rounded-[28px] backdrop-blur-2xl overflow-hidden shadow-[0_0_60px_rgba(212,175,55,0.08)]"
+            >
+              <div className="flex items-center gap-2 px-6 py-4 border-b border-white/10 bg-black/20">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+              </div>
 
-  <p className="text-gray-400 mt-5 text-lg">
-    Join thousands of modern businesses using Hivenex.
-  </p>
+              <div className="grid md:grid-cols-3 gap-5 p-6">
+                {[
+                  {
+                    title: "Total Balance",
+                    amount: "$24,850",
+                  },
+                  {
+                    title: "Monthly Revenue",
+                    amount: "$12,430",
+                  },
+                  {
+                    title: "Expenses",
+                    amount: "$3,210",
+                  },
+                ].map((card) => (
+                  <motion.div
+                    key={card.title}
+                    whileHover={{ y: -8, scale: 1.02 }}
+                    className="bg-black/25 border border-white/10 rounded-2xl p-5"
+                  >
+                    <p className="text-sm text-gray-400 mb-3">{card.title}</p>
+                    <h3 className="text-3xl font-bold bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] bg-clip-text text-transparent mb-5">
+                      {card.amount}
+                    </h3>
+                    <div className="space-y-2">
+                      {[100, 80, 60].map((width, index) => (
+                        <motion.div
+                          key={width}
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${width}%` }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8, delay: index * 0.12 }}
+                          className="h-2 rounded-full bg-gradient-to-r from-[#D4AF37]/70 to-white/10"
+                        />
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
 
-  <motion.button
-    whileHover={{ scale: 1.04 }}
-    className="mt-8 bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-3.5 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.45)] hover:shadow-[0_0_55px_rgba(212,175,55,0.8)] transition"
-  >
-    Get Started
-  </motion.button>
+        {/* Download Section (with Images Restored) */}
+        <section className="relative py-20 border-t border-white/10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
+                DOWNLOAD
+              </p>
+              <h2 className="text-4xl md:text-5xl font-bold">
+                Available Everywhere
+              </h2>
+              <p className="text-gray-400 mt-4">
+                Choose your platform and get started instantly.
+              </p>
+            </div>
 
-</motion.div>
+            <div className="grid md:grid-cols-4 gap-5">
+              {items.map((item, index) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{
+                    y: -8,
+                    scale: 1.02,
+                    boxShadow: "0 0 40px rgba(212,175,55,0.15)",
+                  }}
+                  className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center overflow-hidden group hover:border-[#D4AF37]/30 transition duration-300"
+                >
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,#D4AF3715,transparent_70%)]" />
 
-      
-      </section>
+                  <motion.div
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{
+                      duration: 3.8,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.25,
+                    }}
+                    whileHover={{ rotate: 8, scale: 1.1 }}
+                    className="relative z-10 w-20 h-20 rounded-full bg-black/30 flex items-center justify-center mx-auto mb-5 border border-white/10"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-12 h-12 object-contain"
+                    />
+                  </motion.div>
+
+                  <h3 className="relative z-10 text-lg font-semibold">
+                    {item.name}
+                  </h3>
+
+                  <p className="relative z-10 text-gray-400 mt-2 text-sm">
+                    Download available
+                  </p>
+
+                  <motion.button
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="relative z-10 mt-5 w-full py-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D4AF37]/40 hover:text-[#F5E6A8] transition"
+                  >
+                    Download
+                  </motion.button>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="relative py-20 border-t border-white/10 text-center overflow-hidden">
+          <motion.div
+            animate={{
+              x: ["-20%", "20%", "-20%"],
+              opacity: [0.15, 0.45, 0.15],
+            }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute inset-x-0 top-8 mx-auto h-28 max-w-4xl rounded-full bg-[#D4AF37]/20 blur-3xl"
+          />
+          <div className="max-w-3xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-b from-white to-[#F5E6A8] bg-clip-text text-transparent">
+                Ready to simplify your accounting?
+              </h2>
+
+              <p className="text-gray-400 mt-5 text-lg">
+                Join thousands of modern businesses using Hivenex.
+              </p>
+
+              <motion.button
+                whileHover={{
+                  scale: 1.04,
+                  boxShadow: "0 0 55px rgba(212,175,55,0.8)",
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="mt-8 bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-3.5 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.45)]"
+              >
+                Get Started
+              </motion.button>
+            </motion.div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
