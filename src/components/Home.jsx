@@ -12,10 +12,30 @@ function Home() {
   const [open, setOpen] = useState(false);
 
   const items = [
-    { name: "Windows", image: windows },
-    { name: "macOS", image: mac },
-    { name: "Linux", image: linux },
-    { name: "Web App", image: web },
+    {
+      name: "Windows",
+      image: windows,
+      detail: "Optimized desktop installer for Windows 10 and 11.",
+      badge: "Recommended",
+    },
+    {
+      name: "macOS",
+      image: mac,
+      detail: "Universal build for Apple silicon and Intel Macs.",
+      badge: "Universal",
+    },
+    {
+      name: "Linux",
+      image: linux,
+      detail: "Fast install options for AppImage and Debian systems.",
+      badge: "Stable",
+    },
+    {
+      name: "Web App",
+      image: web,
+      detail: "Open your secure cloud workspace instantly in browser.",
+      badge: "Instant",
+    },
   ];
 
   const features = [
@@ -45,9 +65,9 @@ function Home() {
   ];
 
   return (
-    <div className="font-[Poppins] min-h-screen overflow-hidden relative text-white bg-[#02030a]">
+    <div className="font-[Poppins] min-h-screen overflow-hidden relative text-white bg-[#030303]">
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,#21406a_0%,transparent_28%),radial-gradient(circle_at_82%_18%,#6d4a12_0%,transparent_26%),radial-gradient(circle_at_50%_95%,#0e4f57_0%,transparent_32%),linear-gradient(135deg,#02030a_0%,#07111f_48%,#000000_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,#2a2110_0%,transparent_30%),radial-gradient(circle_at_82%_18%,#6d4a12_0%,transparent_28%),radial-gradient(circle_at_50%_95%,#17130b_0%,transparent_34%),linear-gradient(135deg,#030303_0%,#0c0a07_48%,#000000_100%)]" />
 
       <motion.div
         animate={{
@@ -57,7 +77,7 @@ function Home() {
           rotate: [0, 18, -12, 0],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 -left-36 h-[760px] w-[760px] rounded-full bg-[conic-gradient(from_180deg,#D4AF3735,#1fb6ff20,#7c3aed22,#F5E6A824,#D4AF3735)] blur-[150px]"
+        className="absolute -top-40 -left-36 h-[760px] w-[760px] rounded-full bg-[conic-gradient(from_180deg,#D4AF3735,#4b351322,#17100a30,#F5E6A824,#D4AF3735)] blur-[150px]"
       />
 
       <motion.div
@@ -68,7 +88,7 @@ function Home() {
           rotate: [0, -16, 10, 0],
         }}
         transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-44 -right-40 h-[820px] w-[820px] rounded-full bg-[conic-gradient(from_45deg,#22d3ee24,#D4AF3728,#ef44441a,#8b5cf624,#22d3ee24)] blur-[170px]"
+        className="absolute -bottom-44 -right-40 h-[820px] w-[820px] rounded-full bg-[conic-gradient(from_45deg,#1b140b28,#D4AF3728,#4a2f0f24,#0f0d0a30,#1b140b28)] blur-[170px]"
       />
 
       <motion.div
@@ -78,15 +98,9 @@ function Home() {
       />
 
       <motion.div
-        animate={{ backgroundPosition: ["0px 0px", "90px 90px"] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        className="absolute inset-0 opacity-[0.07] bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] bg-[size:90px_90px]"
-      />
-
-      <motion.div
         animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute inset-0 opacity-20 bg-[linear-gradient(110deg,transparent_0%,rgba(245,230,168,0.18)_28%,transparent_54%,rgba(34,211,238,0.12)_78%,transparent_100%)] bg-[length:220%_220%]"
+        className="absolute inset-0 opacity-20 bg-[linear-gradient(110deg,transparent_0%,rgba(245,230,168,0.18)_28%,transparent_54%,rgba(212,175,55,0.1)_78%,transparent_100%)] bg-[length:220%_220%]"
       />
 
       {particles.map((className, index) => (
@@ -188,7 +202,7 @@ function Home() {
           <motion.div
             animate={{ rotate: -360, scale: [1.08, 1, 1.08] }}
             transition={{ duration: 36, repeat: Infinity, ease: "linear" }}
-            className="absolute top-1/2 left-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-cyan-300/10"
+            className="absolute top-1/2 left-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#D4AF37]/10"
           />
 
           <div className="relative z-10 max-w-7xl mx-auto px-6">
@@ -393,13 +407,16 @@ function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{
-                    y: -8,
-                    scale: 1.02,
-                    boxShadow: "0 0 40px rgba(212,175,55,0.15)",
+                    y: -10,
+                    boxShadow: "0 24px 70px rgba(212,175,55,0.14)",
                   }}
-                  className="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center overflow-hidden group hover:border-[#D4AF37]/30 transition duration-300"
+                  className="relative bg-white/[0.035] backdrop-blur-xl border border-white/10 rounded-2xl p-6 text-center overflow-hidden group hover:border-[#D4AF37]/40 transition duration-300"
                 >
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,#D4AF3715,transparent_70%)]" />
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_center,#D4AF3718,transparent_68%)]" />
+
+                  <span className="relative z-10 inline-flex rounded-full border border-[#D4AF37]/25 bg-[#D4AF37]/10 px-3 py-1 text-xs font-semibold text-[#F5E6A8]">
+                    {item.badge}
+                  </span>
 
                   <motion.div
                     animate={{ y: [0, -6, 0] }}
@@ -410,29 +427,29 @@ function Home() {
                       delay: index * 0.25,
                     }}
                     whileHover={{ rotate: 8, scale: 1.1 }}
-                    className="relative z-10 w-20 h-20 rounded-full bg-black/30 flex items-center justify-center mx-auto mb-5 border border-white/10"
+                    className="relative z-10 mx-auto mt-6 mb-5 flex h-24 w-24 items-center justify-center rounded-full border border-white/10 bg-black/35 shadow-[inset_0_0_30px_rgba(255,255,255,0.04),0_0_30px_rgba(212,175,55,0.08)]"
                   >
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-12 h-12 object-contain"
+                      className="w-14 h-14 object-contain"
                     />
                   </motion.div>
 
-                  <h3 className="relative z-10 text-lg font-semibold">
+                  <h3 className="relative z-10 text-xl font-semibold">
                     {item.name}
                   </h3>
 
-                  <p className="relative z-10 text-gray-400 mt-2 text-sm">
-                    Download available
+                  <p className="relative z-10 mt-3 min-h-12 text-sm leading-relaxed text-gray-400">
+                    {item.detail}
                   </p>
 
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="relative z-10 mt-5 w-full py-2.5 rounded-xl border border-white/10 bg-white/[0.03] hover:border-[#D4AF37]/40 hover:text-[#F5E6A8] transition"
+                    className="relative z-10 mt-6 w-full py-3 rounded-xl border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-sm font-bold text-[#F5E6A8] hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#F5E6A8] hover:text-black transition"
                   >
-                    Download
+                    {item.name === "Web App" ? "Launch App" : "Download Now"}
                   </motion.button>
                 </motion.div>
               ))}
