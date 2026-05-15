@@ -67,7 +67,7 @@ function Home() {
   return (
     <div className="font-[Poppins] min-h-screen overflow-hidden relative text-white bg-[#030303]">
       {/* Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,#2a2110_0%,transparent_30%),radial-gradient(circle_at_82%_18%,#6d4a12_0%,transparent_28%),radial-gradient(circle_at_50%_95%,#17130b_0%,transparent_34%),linear-gradient(135deg,#030303_0%,#0c0a07_48%,#000000_100%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(212,175,55,0.22)_0%,transparent_32%),radial-gradient(circle_at_84%_18%,rgba(245,230,168,0.16)_0%,transparent_30%),radial-gradient(circle_at_50%_95%,rgba(95,67,18,0.24)_0%,transparent_38%),linear-gradient(135deg,#050403_0%,#100c05_46%,#000000_100%)]" />
 
       <motion.div
         animate={{
@@ -77,7 +77,7 @@ function Home() {
           rotate: [0, 18, -12, 0],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -top-40 -left-36 h-[760px] w-[760px] rounded-full bg-[conic-gradient(from_180deg,#D4AF3735,#4b351322,#17100a30,#F5E6A824,#D4AF3735)] blur-[150px]"
+        className="absolute -top-40 -left-36 h-[760px] w-[760px] rounded-full bg-[conic-gradient(from_180deg,#D4AF3738,#5d421820,#17100a24,#F5E6A826,#D4AF3738)] blur-[150px]"
       />
 
       <motion.div
@@ -88,7 +88,7 @@ function Home() {
           rotate: [0, -16, 10, 0],
         }}
         transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute -bottom-44 -right-40 h-[820px] w-[820px] rounded-full bg-[conic-gradient(from_45deg,#1b140b28,#D4AF3728,#4a2f0f24,#0f0d0a30,#1b140b28)] blur-[170px]"
+        className="absolute -bottom-44 -right-40 h-[820px] w-[820px] rounded-full bg-[conic-gradient(from_45deg,#1b140b28,#D4AF372e,#4a2f0f26,#0f0d0a30,#1b140b28)] blur-[170px]"
       />
 
       <motion.div
@@ -141,14 +141,19 @@ function Home() {
             </motion.div>
 
             <div className="hidden md:flex gap-8 text-gray-300 text-sm font-medium">
-              {["Features", "Pricing", "Download", "Support"].map((item) => (
+              {[
+                { label: "Features", href: "#" },
+                { label: "Pricing", href: "#" },
+                { label: "Download", href: "#" },
+                { label: "About", href: "#/about" },
+              ].map((item) => (
                 <motion.a
-                  key={item}
-                  href="#"
+                  key={item.label}
+                  href={item.href}
                   whileHover={{ y: -2 }}
                   className="hover:text-[#F5E6A8] transition relative group"
                 >
-                  {item}
+                  {item.label}
                   <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] transition-all duration-300 group-hover:w-full" />
                 </motion.a>
               ))}
@@ -186,7 +191,7 @@ function Home() {
               <a href="#">Features</a>
               <a href="#">Pricing</a>
               <a href="#">Download</a>
-              <a href="#">Support</a>
+              <a href="#/about">About</a>
             </motion.div>
           )}
         </nav>
