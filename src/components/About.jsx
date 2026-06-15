@@ -76,13 +76,14 @@ function About() {
               <a href="#/login" className="inline-flex h-10 items-center text-gray-300 hover:text-[#F5E6A8] transition">
                 Log in
               </a>
-              <motion.button
+              <motion.a
+                href="#/trial"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(212,175,55,0.8)" }}
                 whileTap={{ scale: 0.97 }}
                 className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)]"
               >
                 Start Free Trial
-              </motion.button>
+              </motion.a>
             </div>
 
             <button className="md:hidden" onClick={() => setOpen(!open)}>
@@ -101,6 +102,9 @@ function About() {
               <a href="#/download">Download</a>
               <a href="#/about">About</a>
               <a href="#/login">Log in</a>
+              <a href="#/trial" className="text-[#F5E6A8]">
+                Start Free Trial
+              </a>
             </motion.div>
           )}
         </nav>

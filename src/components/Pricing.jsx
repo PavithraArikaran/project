@@ -93,13 +93,14 @@ function Pricing() {
               <a href="#/login" className="inline-flex h-10 items-center text-gray-300 hover:text-[#F5E6A8] transition">
                 Log in
               </a>
-              <motion.button
+              <motion.a
+                href="#/trial"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(212,175,55,0.8)" }}
                 whileTap={{ scale: 0.97 }}
                 className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)]"
               >
                 Start Free Trial
-              </motion.button>
+              </motion.a>
             </div>
 
             <button className="md:hidden" onClick={() => setOpen(!open)}>
@@ -119,6 +120,9 @@ function Pricing() {
                 </a>
               ))}
               <a href="#/login">Log in</a>
+              <a href="#/trial" className="text-[#F5E6A8]">
+                Start Free Trial
+              </a>
             </motion.div>
           )}
         </nav>
@@ -197,7 +201,8 @@ function Pricing() {
                       </span>
                       <span className="pb-2 text-sm text-gray-400">{plan.note}</span>
                     </div>
-                    <motion.button
+                    <motion.a
+                      href="#/trial"
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
                       className={`mt-7 w-full rounded-xl px-5 py-3 font-bold transition ${
@@ -207,7 +212,7 @@ function Pricing() {
                       }`}
                     >
                       Start Free Trial
-                    </motion.button>
+                    </motion.a>
                     <div className="mt-7 space-y-3">
                       {plan.features.map((feature) => (
                         <div key={feature} className="flex gap-3 text-sm text-gray-300">

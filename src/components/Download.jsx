@@ -111,7 +111,7 @@ function Download() {
                 Log in
               </a>
               <motion.a
-                href="#/pricing"
+                href="#/trial"
                 whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(212,175,55,0.8)" }}
                 whileTap={{ scale: 0.97 }}
                 className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)]"
@@ -137,6 +137,9 @@ function Download() {
                 </a>
               ))}
               <a href="#/login">Log in</a>
+              <a href="#/trial" className="text-[#F5E6A8]">
+                Start Free Trial
+              </a>
             </motion.div>
           )}
         </nav>

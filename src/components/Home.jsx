@@ -173,7 +173,8 @@ function Home() {
               <a href="#/login" className="inline-flex h-10 items-center text-gray-300 hover:text-[#F5E6A8] transition">
                 Log in
               </a>
-              <motion.button
+              <motion.a
+                href="#/trial"
                 whileHover={{
                   scale: 1.05,
                   boxShadow: "0 0 50px rgba(212,175,55,0.8)",
@@ -182,7 +183,7 @@ function Home() {
                 className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-5 py-2 rounded-xl font-semibold shadow-[0_0_25px_rgba(212,175,55,0.4)]"
               >
                 Start Free Trial
-              </motion.button>
+              </motion.a>
             </div>
 
             <div className="md:hidden">
@@ -203,6 +204,9 @@ function Home() {
               <a href="#/download">Download</a>
               <a href="#/about">About</a>
               <a href="#/login">Log in</a>
+              <a href="#/trial" className="text-[#F5E6A8]">
+                Start Free Trial
+              </a>
             </motion.div>
           )}
         </nav>
@@ -253,7 +257,8 @@ function Home() {
               transition={{ delay: 0.4 }}
               className="mt-10 flex flex-col md:flex-row justify-center gap-4"
             >
-              <motion.button
+              <motion.a
+                href="#/trial"
                 whileHover={{
                   scale: 1.05,
                   y: -2,
@@ -263,7 +268,7 @@ function Home() {
                 className="bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-4 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.5)]"
               >
                 Start Free Trial
-              </motion.button>
+              </motion.a>
 
               <motion.a
                 href="#/download"
@@ -515,7 +520,8 @@ function Home() {
                 Join thousands of modern businesses using Hivenex.
               </p>
 
-              <motion.button
+              <motion.a
+                href="#/trial"
                 whileHover={{
                   scale: 1.04,
                   boxShadow: "0 0 55px rgba(212,175,55,0.8)",
@@ -524,7 +530,7 @@ function Home() {
                 className="mt-8 bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-8 py-3.5 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.45)]"
               >
                 Get Started
-              </motion.button>
+              </motion.a>
             </motion.div>
           </div>
         </section>

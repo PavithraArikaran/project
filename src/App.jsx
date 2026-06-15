@@ -6,6 +6,7 @@ import Features from './components/Features'
 import Home from './components/Home'
 import Login from './components/Login'
 import Pricing from './components/Pricing'
+import Trial from './components/Trial'
 
 const getRoute = () => {
   if (window.location.pathname === '/features' || window.location.hash === '#/features') {
@@ -22,6 +23,10 @@ const getRoute = () => {
 
   if (window.location.pathname === '/login' || window.location.hash === '#/login') {
     return 'login'
+  }
+
+  if (window.location.pathname === '/trial' || window.location.hash === '#/trial') {
+    return 'trial'
   }
 
   if (window.location.pathname === '/about' || window.location.hash === '#/about') {
@@ -60,6 +65,10 @@ function App() {
 
   if (route === 'login') {
     return <Login />
+  }
+
+  if (route === 'trial') {
+    return <Trial />
   }
 
   return route === 'about' ? <About /> : <Home />
