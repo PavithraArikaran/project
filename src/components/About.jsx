@@ -55,9 +55,9 @@ function About() {
 
             <div className="hidden md:flex gap-8 text-gray-300 text-sm font-medium">
               {[
-                { label: "Features", href: "#/" },
-                { label: "Pricing", href: "#/" },
-                { label: "Download", href: "#/" },
+                { label: "Features", href: "#/features" },
+                { label: "Pricing", href: "#/pricing" },
+                { label: "Download", href: "#/download" },
                 { label: "About", href: "#/about" },
               ].map((item) => (
                 <motion.a
@@ -72,10 +72,10 @@ function About() {
               ))}
             </div>
 
-            <div className="hidden md:flex gap-4">
-              <button className="text-gray-300 hover:text-[#F5E6A8] transition">
+            <div className="hidden md:flex items-center gap-4">
+              <a href="#/login" className="inline-flex h-10 items-center text-gray-300 hover:text-[#F5E6A8] transition">
                 Log in
-              </button>
+              </a>
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(212,175,55,0.8)" }}
                 whileTap={{ scale: 0.97 }}
@@ -96,10 +96,11 @@ function About() {
               animate={{ opacity: 1, height: "auto" }}
               className="md:hidden px-6 pb-6 flex flex-col gap-4 text-gray-300"
             >
-              <a href="#/">Features</a>
-              <a href="#/">Pricing</a>
-              <a href="#/">Download</a>
+              <a href="#/features">Features</a>
+              <a href="#/pricing">Pricing</a>
+              <a href="#/download">Download</a>
               <a href="#/about">About</a>
+              <a href="#/login">Log in</a>
             </motion.div>
           )}
         </nav>
@@ -131,7 +132,7 @@ function About() {
               </p>
               <div className="mt-9 flex flex-col sm:flex-row gap-4">
                 <motion.a
-                  href="#/"
+                  href="#/features"
                   whileHover={{ scale: 1.04, y: -2 }}
                   whileTap={{ scale: 0.97 }}
                   className="text-center bg-gradient-to-r from-[#D4AF37] to-[#F5E6A8] text-black px-7 py-4 rounded-2xl text-lg font-bold shadow-[0_0_30px_rgba(212,175,55,0.45)]"
@@ -139,7 +140,7 @@ function About() {
                   Explore Features
                 </motion.a>
                 <motion.a
-                  href="#/"
+                  href="#/download"
                   whileHover={{ scale: 1.04, y: -2 }}
                   className="text-center border border-white/20 bg-white/5 backdrop-blur-xl px-7 py-4 rounded-2xl text-lg hover:text-[#F5E6A8] transition"
                 >

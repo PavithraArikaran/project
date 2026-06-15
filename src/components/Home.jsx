@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 import windows from "../assets/windows.png";
 import linux from "../assets/linux.png";
@@ -10,6 +10,11 @@ import web from "../assets/web.png";
 
 function Home() {
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.35], [0, -120]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.28], [1, 0.35]);
+  const ringScale = useTransform(scrollYProgress, [0, 0.4], [1, 1.18]);
+  const previewY = useTransform(scrollYProgress, [0.25, 0.65], [80, -40]);
 
   const items = [
     {
@@ -66,6 +71,11 @@ function Home() {
 
   return (
     <div className="font-[Poppins] min-h-screen overflow-hidden relative text-white bg-[#030303]">
+      <motion.div
+        style={{ scaleX: scrollYProgress }}
+        className="fixed left-0 top-0 z-[70] h-1 w-full origin-left bg-gradient-to-r from-[#D4AF37] via-[#F5E6A8] to-white shadow-[0_0_22px_rgba(212,175,55,0.75)]"
+      />
+
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(212,175,55,0.22)_0%,transparent_32%),radial-gradient(circle_at_84%_18%,rgba(245,230,168,0.16)_0%,transparent_30%),radial-gradient(circle_at_50%_95%,rgba(95,67,18,0.24)_0%,transparent_38%),linear-gradient(135deg,#050403_0%,#100c05_46%,#000000_100%)]" />
 
@@ -142,9 +152,9 @@ function Home() {
 
             <div className="hidden md:flex gap-8 text-gray-300 text-sm font-medium">
               {[
-                { label: "Features", href: "#" },
-                { label: "Pricing", href: "#" },
-                { label: "Download", href: "#" },
+                { label: "Features", href: "#/features" },
+                { label: "Pricing", href: "#/pricing" },
+                { label: "Download", href: "#/download" },
                 { label: "About", href: "#/about" },
               ].map((item) => (
                 <motion.a
@@ -159,10 +169,10 @@ function Home() {
               ))}
             </div>
 
-            <div className="hidden md:flex gap-4">
-              <button className="text-gray-300 hover:text-[#F5E6A8] transition">
+            <div className="hidden md:flex items-center gap-4">
+              <a href="#/login" className="inline-flex h-10 items-center text-gray-300 hover:text-[#F5E6A8] transition">
                 Log in
-              </button>
+              </a>
               <motion.button
                 whileHover={{
                   scale: 1.05,
@@ -188,10 +198,11 @@ function Home() {
               animate={{ opacity: 1, height: "auto" }}
               className="md:hidden px-6 pb-6 flex flex-col gap-4 text-gray-300"
             >
-              <a href="#">Features</a>
-              <a href="#">Pricing</a>
-              <a href="#">Download</a>
+              <a href="#/features">Features</a>
+              <a href="#/pricing">Pricing</a>
+              <a href="#/download">Download</a>
               <a href="#/about">About</a>
+              <a href="#/login">Log in</a>
             </motion.div>
           )}
         </nav>
@@ -199,7 +210,8 @@ function Home() {
         {/* Hero */}
         <section className="relative py-32 text-center overflow-hidden">
           <motion.div
-            animate={{ rotate: 360, scale: [1, 1.05, 1] }}
+            style={{ scale: ringScale }}
+            animate={{ rotate: 360 }}
             transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
             className="absolute top-1/2 left-1/2 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#D4AF37]/15"
           />
@@ -210,7 +222,10 @@ function Home() {
             className="absolute top-1/2 left-1/2 h-[620px] w-[620px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#D4AF37]/10"
           />
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6">
+          <motion.div
+            style={{ y: heroY, opacity: heroOpacity }}
+            className="relative z-10 max-w-7xl mx-auto px-6"
+          >
             <motion.h1
               initial={{ opacity: 0, y: 60 }}
               animate={{ opacity: 1, y: 0 }}
@@ -250,12 +265,13 @@ function Home() {
                 Start Free Trial
               </motion.button>
 
-              <motion.button
+              <motion.a
+                href="#/download"
                 whileHover={{ scale: 1.05, y: -2 }}
                 className="border border-white/20 bg-white/5 backdrop-blur-xl px-8 py-4 rounded-2xl text-lg hover:text-[#F5E6A8] transition"
               >
                 Download App
-              </motion.button>
+              </motion.a>
             </motion.div>
 
             <div className="mt-14 flex justify-center gap-4 md:gap-10 flex-wrap text-sm text-gray-300">
@@ -273,13 +289,19 @@ function Home() {
                 )
               )}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Features */}
         <section className="relative py-20 border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.65 }}
+              className="text-center mb-12"
+            >
               <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
                 FEATURES
               </p>
@@ -289,7 +311,7 @@ function Home() {
               <p className="text-gray-400 mt-4">
                 Everything you need to manage your finances.
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-3 gap-5">
               {features.map((item, index) => (
@@ -333,9 +355,10 @@ function Home() {
         <section className="relative py-20">
           <div className="max-w-6xl mx-auto px-6">
             <motion.div
+              style={{ y: previewY }}
               initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7 }}
               className="relative bg-white/[0.04] border border-white/10 rounded-[28px] backdrop-blur-2xl overflow-hidden shadow-[0_0_60px_rgba(212,175,55,0.08)]"
             >
@@ -391,7 +414,13 @@ function Home() {
         {/* Download Section (with Images Restored) */}
         <section className="relative py-20 border-t border-white/10">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.35 }}
+              transition={{ duration: 0.65 }}
+              className="text-center mb-12"
+            >
               <p className="text-[#D4AF37] uppercase tracking-[0.4em] text-xs mb-4">
                 DOWNLOAD
               </p>
@@ -401,7 +430,7 @@ function Home() {
               <p className="text-gray-400 mt-4">
                 Choose your platform and get started instantly.
               </p>
-            </div>
+            </motion.div>
 
             <div className="grid md:grid-cols-4 gap-5">
               {items.map((item, index) => (
