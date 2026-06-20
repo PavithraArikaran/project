@@ -1,6 +1,5 @@
-@import "tailwindcss";
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
 
 @theme {
   --font-sans: 'Inter', sans-serif;
@@ -10,7 +9,7 @@
   --color-ink-soft: #0a0a0a;
   --color-line: rgba(255, 255, 255, 0.08);
   --color-haze: #6b6b6b;
-  --color-accent: #c8ff00;
+  --color-accent: #ffd000;
 }
 
 :root {
